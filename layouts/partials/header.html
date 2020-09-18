@@ -23,9 +23,35 @@
         {{ partial "fathom.html" . }}
     </head>
     <body>
-        {{ template "_internal/google_analytics.html" . }}
+      {{ template "_internal/google_analytics.html" . }}
+      <script type='text/javascript'>
+	//some default pre init
+	var Countly = Countly || {};
+	Countly.q = Countly.q || [];
+	Countly.app_key = 'd0b415d1e4ac6e5e17a2f0251f27d2f588db9908';
+	Countly.url = 'https://t.scorpil.com';
 
-        <div id="wrapper">
+	Countly.q.push(['track_sessions']);
+	Countly.q.push(['track_pageview']);
+	Countly.q.push(['track_clicks']);
+	Countly.q.push(['track_scrolls']);
+	Countly.q.push(['track_errors']);
+	Countly.q.push(['track_links']);
+	Countly.q.push(['track_forms']);
+	Countly.q.push(['collect_from_forms']);
+
+	(function() {
+	    var cly = document.createElement('script'); cly.type = 'text/javascript';
+	    cly.async = true;
+	    //enter url of script here
+	    cly.src = 'https://t.scorpil.com/sdk/web/countly.min.js';
+	    cly.onload = function(){Countly.init()};
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cly, s);
+	})();
+      </script>
+      <noscript><img src='https://t.scorpil.com/pixel.png?app_key=d0b415d1e4ac6e5e17a2f0251f27d2f588db9908&begin_session=1'/></noscript>
+
+      <div id="wrapper">
             <header class="site-header">
                 <div class="container">
                     <div class="site-title-wrapper">
