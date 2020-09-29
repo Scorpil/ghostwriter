@@ -33,7 +33,7 @@ h6 { font-size: 14px; margin-bottom: 12px; }
 
 p {
     line-height: 1.8;
-    margin: 0 0 30px;
+    margin: 0 0 1rem;
 }
 
 a {
@@ -42,13 +42,14 @@ a {
 }
 
 ul, ol {
-    line-height: 1.4;
+    line-height: 1.8;
     margin: 0 0 20px;
+    padding-left: 20px;
 
     ul, ol { margin: 10px 0 0 20px; }
 
     li {
-        margin: 0 0 2px;
+        margin: 0 0 0.5rem;
 
         &:last-of-type { margin-bottom: 0; }
     }
