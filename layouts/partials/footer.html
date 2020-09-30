@@ -7,7 +7,7 @@
                     <h2 class="site-title">
                         <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
                     </h2>
-                    <a class="button-square button-jump-top js-jump-top" href="#">
+                    <a id="js-jump-top" class="button-square button-jump-top" href="#">
                         <i class="fa fa-angle-up"></i>
                     </a>
                 </div>
@@ -22,8 +22,30 @@
             </div>
         </footer>
 
-        <script src="{{ .Site.BaseURL }}js/jquery-1.11.3.min.js"></script>
-        <script src="{{ .Site.BaseURL }}js/jquery.fitvids.js"></script>
-        <script src="{{ .Site.BaseURL }}js/scripts.js"></script>
+	<script>
+	  var start;
+	  var animationTime = 1500;
+	  const scrollToTop = (ts) => {
+	    if (!ts) {
+	      window.requestAnimationFrame(scrollToTop);
+	      return;
+	    }
+	    if (!start) {
+	      start = ts
+	    }
+	    var elapsed = Math.min(ts - start, animationTime);
+	    var progress = elapsed / animationTime;
+	    var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+	    if (currentScroll > 5) {
+	      window.scrollTo(0, Math.max(currentScroll - (currentScroll * progress), 0));
+              window.requestAnimationFrame(scrollToTop);
+	    }
+	  };
+
+	  document.getElementById("js-jump-top").onclick = function(e) {
+	    scrollToTop();
+	    e.preventDefault();
+	  }
+	</script>
     </body>
 </html>
