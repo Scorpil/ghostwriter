@@ -39,6 +39,8 @@
 	    if (currentScroll > 5) {
 	      window.scrollTo(0, Math.max(currentScroll - (currentScroll * progress), 0));
               window.requestAnimationFrame(scrollToTop);
+	    } else {
+		start = null;
 	    }
 	  };
 
